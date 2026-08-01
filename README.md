@@ -252,3 +252,10 @@ telemetry-weighted real-world impact, duplicate-key cost).
   `JsonOps`/`NbtOps` by source inspection, not guaranteed by the
   `MapLike` contract), and the `Spliterator`-based safe version measured
   1.7-2.2x slower than plain `.toList()` at N=1/2.
+
+## Attribution
+
+The benchmarked decode implementations are adapted from
+`com.mojang.serialization.codecs.BaseMapCodec#decode()` in
+[Mojang/DataFixerUpper](https://github.com/Mojang/DataFixerUpper),
+licensed under the MIT License.
