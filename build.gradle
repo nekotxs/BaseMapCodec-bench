@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'me.champeau.jmh' version '0.7.2'
+}
+
+group = 'dev.neko.mapcodecbench'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+    // DataFixerUpper is published here, not on actual Maven Central.
+    maven { url 'https://libraries.minecraft.net' }
+}
+
+dependencies {
+    jmh 'it.unimi.dsi:fastutil:8.5.12'
+    jmh 'com.google.guava:guava:32.1.2-jre'
+    jmh 'com.mojang:datafixerupper:8.0.16'
+    jmh 'com.google.code.gson:gson:2.10.1'
+}
+
+jmh {
+    warmupIterations = 3
+    iterations = 5
+    fork = 3
+    resultFormat = 'JSON'
+    resultsFile = project.file("${project.projectDir}/results.json")
+}
